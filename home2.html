@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск наибольшего числа</title>
+</head>
+<body>
+    <h1>Поиск наибольшего из трёх чисел</h1>
+    
+    <label>Число 1: </label>
+    <input type="number" id="num1">
+    
+    <label>Число 2: </label>
+    <input type="number" id="num2">
+    
+    <label>Число 3: </label>
+    <input type="number" id="num3">
+    
+    <button onclick="findMax()">Найти наибольшее</button>
+    
+    <p id="result">Результат появится здесь</p>
+    
+    <script>
+        function findMax() {
+    // Получаем значения из полей ввода
+    const num1 = parseFloat(document.getElementById('num1').value);
+    const num2 = parseFloat(document.getElementById('num2').value);
+    const num3 = parseFloat(document.getElementById('num3').value);
+    
+    // Находим наибольшее число с помощью условных операторов
+    let maxNumber;
+    if (num1 >= num2 && num1 >= num3) {
+        maxNumber = num1;
+    } else if (num2 >= num1 && num2 >= num3) {
+        maxNumber = num2;
+    } else {
+        maxNumber = num3;
+    }
+    
+    
+    // Выводим результат на страницу
+    document.getElementById('result').innerHTML = "Наибольшее число: " + maxNumber;
+}
+    </script>
+</body>
+</html>

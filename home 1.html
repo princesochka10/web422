@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Случайные числа</title>
+</head>
+<body>
+    <h1>Три случайных числа от 0 до 100</h1>
+    <p>Результат:</p>
+    <ul id="numbersList">
+        <!-- Здесь будут выводиться числа -->
+    </ul>
+    
+    <button onclick="generateNumbers()">Сгенерировать числа</button>
+    
+    <script>
+        function generateNumbers() {
+    const numbers = new Set(); // Создаём множество для хранения уникальных чисел
+    
+    while (numbers.size < 3) { // Цикл продолжается, пока не наберем 3 уникальных числа
+        const randomNum = Math.floor(Math.random() * 101); // Генерируем случайное число от 0 до 100
+        numbers.add(randomNum); // Добавляем число в множество
+    }
+    
+    const numbersArray = Array.from(numbers); // Преобразуем множество в массив
+    displayNumbers(numbersArray); // Вызываем функцию для отображения чисел
+}
+
+function displayNumbers(numbers) {
+    const list = document.getElementById('numbersList'); // Получаем элемент списка
+    list.innerHTML = ''; // Очищаем список перед добавлением новых чисел
+    
+    numbers.forEach(number => {
+        const listItem = document.createElement('li'); // Создаём новый элемент списка
+        listItem.textContent = number; // Добавляем текст (число) в элемент
+        list.appendChild(listItem); // Добавляем элемент в список
+    });
+}
+    </script>
+</body>
+</html>
