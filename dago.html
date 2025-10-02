@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+    <style>
+        
+        /* Общий стиль для тела страницы */
+        body {
+            font-family: Arial, sans-serif; /* Шрифт по умолчанию */
+            background-color: #ec903a; /* Светло-оранжевый фон */
+            margin: 20px; /* Отступы от краёв */
+        }
+
+        /* Стиль для формы */
+        form {
+            background-color: #fff; /* Белый фон формы */
+            padding: 20px; /* Отступы внутри формы */
+            border-radius: 5px; /* Скругление углов */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта объёма */
+        }
+
+        /* Стиль для метки label */
+        label {
+            display: block; /* Отображение в виде блока */
+            margin-bottom: 5px; /* Отступ снизу */
+            font-weight: bold; /* Жирный шрифт */
+        }
+
+        /* Стиль для поля ввода текста */
+        input[type="text"] {
+            width: 100%; /* Ширина на всю доступную область */
+            padding: 8px; /* Внутренние отступы */
+            margin-bottom: 10px; /* Отступ снизу */
+            border: 1px solid #ccc; /* Граница серого цвета */
+            border-radius: 3px; /* Скругление углов */
+        }
+
+        /* Стиль для кнопки */
+        button {
+            background-color: #e0840b; /* оранжевый фон */
+            color: white; /* Белый цвет текста */
+            padding: 10px 15px; /* Отступы внутри кнопки */
+            border: none; /* Убираем границу */
+            border-radius: 3px; /* Скругление углов */
+            cursor: pointer; /* Курсор в виде руки при наведении */
+        }
+
+        /* Эффект при наведении на кнопку */
+        button:hover {
+            background-color: #45a049; /*  зелёный при наведении */
+        }
+
+        /* Стиль для блока с заказами */
+        div {
+            background-color: #fff; /* Белый фон блока */
+            padding: 20px; /* Отступы внутри блока */
+            margin-top: 20px; /* Отступ сверху */
+            border-radius: 5px; /* Скругление углов */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта объёма */
+        }
+
+        /* Стиль для заголовка списка заказов */
+        p {
+            font-size: 18px; /* Размер шрифта */
+            font-weight: bold; /* Жирный шрифт */
+            margin-bottom: 10px; /* Отступ снизу */
+        }
+
+        /* Стиль для списка заказов */
+        ul {
+            list-style-type: none; /* Убираем маркеры списка */
+            padding: 0; /* Убираем внутренние отступы */
+        }
+
+        /* Стиль для пунктов списка */
+        li {
+            margin-bottom: 5px; /* Отступ снизу */
+            display: flex; /* Гибкое расположение элементов */
+            align-items: center; /* Выравнивание по центру */
+        }
+
+        /* Стиль для чекбокса */
+        input[type="checkbox"] {
+            margin-right: 10px; /* Отступ справа */
+        }
+    </style>
+</head>
+<body>
+    <!-- Остальной код остаётся прежним -->
+    <form>
+        <label for="name">Название пиццы</label> <br/>
+        <input type="text" placeholder="название пиццы" id="name"> <br/>
+        <button id="add" type="button">Добавить</button>
+    </form>
+
+    <div>
+        <p>Заказы</p>
+        <ul id="orders">
+            <li>Креветка с песто <input type="checkbox" id=""></li>
+            <!-- l*20>lorem-->
+        </ul>
+    </div>
+
+    <script>
+        //alert.console.log("Креветочка");
+        let orderList = document.getElementById('orders');
+        let nameInput = document.getElementById("name");
+        let addBtn = document.getElementById('add');     
+           
+        addBtn.addEventListener('click', add);
+
+        let dodoList=[]
+
+        function add(){
+            //console.log(nameInput.value);
+
+            dodoList.push(nameInput.value);
+            console.log(dodoList);
+            addToHTML(nameInput.value);
+        }
+        function addToHTML (name) {
+            const li= document.createElement('li');
+            li.innerHTML = `
+                <span>${name}</span>
+                <button type= "button" class="delete-btn">X</button>
+                `;
+            li.querySelector('.delete-btn').addEventListener('click', function(){
+                li.remove();
+            });
+            
+            orderList.appendChild(li);
+
+        }
+    </script>
+</body>
+</html>
